@@ -1,0 +1,13 @@
+[project]
+name = "expense-tracker-mcp-server"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "certifi>=2025.11.12",
+    "fastmcp>=2.13.3",
+    "motor>=3.7.1",
+    "pymongo>=4.15.5",
+    "python-dotenv>=1.2.1",
+]
