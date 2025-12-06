@@ -1,13 +1,22 @@
 [project]
 name = "expense-tracker-mcp-server"
 version = "0.1.0"
-description = "Add your description here"
+description = "AI-powered expense tracker with MCP and FastAPI authentication"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "certifi>=2025.11.12",
     "fastmcp>=2.13.3",
+    "fastapi[standard]>=0.109.0",
+    "uvicorn[standard]>=0.27.0",
+    "python-jose[cryptography]>=3.3.0",
+    "passlib[bcrypt]>=1.7.4",
+    "httpx>=0.26.0",
+    "langchain-google-genai>=3.2.0",
+    "langchain-mcp-adapters>=0.1.14",
+    "langgraph>=1.0.4",
     "motor>=3.7.1",
     "pymongo>=4.15.5",
     "python-dotenv>=1.2.1",
+    "langchain>=1.1.2",
 ]

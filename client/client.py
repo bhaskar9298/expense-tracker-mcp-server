@@ -1,17 +1,20 @@
 import asyncio
 from langchain_mcp_adapters.client import MultiServerMCPClient
 from dotenv import load_dotenv
-from langchain_openai import ChatOpenAI
+from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.messages import ToolMessage
 import json
+import os
 
 load_dotenv()
+
+api_key = os.getenv("GEMINI_API_KEY")
 
 SERVERS = { 
     
     "expense": {
         "transport": "streamable_http",  # if this fails, try "sse"
-        "url": "https://splendid-gold-dingo.fastmcp.app/mcp"
+        "url": "https://optimistic-brown-antelope.fastmcp.app/mcp"
     }
 }
 
@@ -27,10 +30,14 @@ async def main():
 
     print("Available tools:", named_tools.keys())
 
-    llm = ChatOpenAI(model="gpt-5")
+    llm = ChatGoogleGenerativeAI(
+                model="gemini-2.5-flash",
+                google_api_key=api_key,
+                temperature=0.1
+            )
     llm_with_tools = llm.bind_tools(tools)
 
-    prompt = "Draw a triangle rotating in place using the manim tool."
+    prompt = "Add an expense of 60 rupees for papdi chat bought on yesterday(05-12-2025) "
     response = await llm_with_tools.ainvoke(prompt)
 
     if not getattr(response, "tool_calls", None):
